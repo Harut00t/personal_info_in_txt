@@ -57,7 +57,7 @@ while True:
             #ask the user to input their personal information
             birth_month = input("please enter your birth month in numbers: ")
             birth_day = input("please enter your birth day: ")
-            birth_year = input("please input your birth year:")
+            birth_year = input("please input your birth year: ")
 
             if birth_month.isdigit() and birth_day.isdigit() and birth_year.isdigit() and len(birth_year) == 4:
                 break
@@ -85,31 +85,38 @@ while True:
             email_address = input("please enter your email: ")
             break
 
-        # #an array of the name and age
-        # personal_info[name] = {
-        #     "name" : lastname "+" firstname "+" middlename,
-        #     "age" : age
-        # }
+        #format
+        fullname = f"{lastname}, {firstname}, {middlename}"
+        birth = f"{birth_month}/{birth_day}/{birth_year}"
+
+        #insert the personal information into the name's dictionary
+        personal_info[name] = {
+            "name" : fullname,
+            "age" : age,
+            "birthday" : birth,
+            "address" : address,
+            "phone number" : phone_number,
+            "email address" : email_address,
+        }
         
-        # print(personal_info[name])
-
-        # personal_info.update(personal_info)
-
-        while True:
-            #ask the user to continue or not
-            continue_or_not = input("Would you like to continue?: ")
-
-            if continue_or_not == "n":
-                break
-            elif continue_or_not != "y":
-                print("please input y or n.")
-                continue
-
-
-
+        print(personal_info[name])
         
-            #insert the personal information into the name's dictionary
-            #enter the dictionary for writing in the text file
-            #loop
+        #enter the dictionary for writing in the text file
+        with open(".\personal_info.txt", "a") as file_handle:
+            file_handle.write(f"{personal_info[name]}")
+        
+        #ask the user to continue or not
+        continue_or_not = input("Would you like to continue? (y or n): ")
+
+        if continue_or_not == "n":
+            print("All input has been added!")
+            break
+        elif continue_or_not != "y":
+            print("please input y or n.")
+            continue
+
     except:
         print("Unexpected error, please try again.")
+
+
+    
