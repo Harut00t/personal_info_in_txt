@@ -91,19 +91,20 @@ while True:
 
         #insert the personal information into the name's dictionary
         personal_info[name] = {
-            "name" : fullname,
-            "age" : age,
-            "birthday" : birth,
-            "address" : address,
-            "phone number" : phone_number,
-            "email address" : email_address,
+            "name" : fullname, "\n"
+            "age" : age, "\n"
+            "birthday" : birth, "\n"
+            "address" : address, "\n"
+            "phone number" : phone_number, "\n"
+            "email address" : email_address, "\n"
         }
         
         print(personal_info[name])
         
         #enter the dictionary for writing in the text file
         with open(".\personal_info.txt", "a") as file_handle:
-            file_handle.write(f"{personal_info[name]}")
+            file_handle.write(f"{personal_info[name]}\n")
+            file_handle.write("\n")
         
         #ask the user to continue or not
         continue_or_not = input("Would you like to continue? (y or n): ")
@@ -117,6 +118,3 @@ while True:
 
     except:
         print("Unexpected error, please try again.")
-
-
-    
