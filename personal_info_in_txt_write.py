@@ -5,7 +5,7 @@ while True:
     try:
         while True:
             #ask the user to input the name
-            name = input("please enter your name: ")
+            name = input("please enter your nickname: ")
 
             if name.isalpha():
                 break
@@ -91,20 +91,32 @@ while True:
 
         #insert the personal information into the name's dictionary
         personal_info[name] = {
-            "name" : fullname, "\n"
-            "age" : age, "\n"
-            "birthday" : birth, "\n"
-            "address" : address, "\n"
-            "phone number" : phone_number, "\n"
-            "email address" : email_address, "\n"
+            "name" : fullname ,
+            "age" : age ,
+            "birthday" : birth ,
+            "address" : address ,
+            "phone number" : phone_number ,
+            "email address" : email_address
         }
         
-        print(personal_info[name])
+        print(f"\nName: {personal_info[name]['name']}\n")
+        print(f"Age: {personal_info[name]['age']}\n")
+        print(f"Birthday: {personal_info[name]['birthday']}\n")
+        print(f"Address: {personal_info[name]['address']}\n")
+        print(f"Phone Number: {personal_info[name]['phone number']}\n")
+        print(f"Email Address: {personal_info[name]['email address']}\n")
+
         
         #enter the dictionary for writing in the text file
         with open(".\personal_info.txt", "a") as file_handle:
-            file_handle.write(f"{personal_info[name]}\n")
-            file_handle.write("\n")
+            file_handle.write(f"{name}'s Personal Information:\n")
+            file_handle.write(f"Name: {personal_info[name]['name']}\n")
+            file_handle.write(f"Age: {personal_info[name]['age']}\n")
+            file_handle.write(f"Birthday: {personal_info[name]['birthday']}\n")
+            file_handle.write(f"Address: {personal_info[name]['address']}\n")
+            file_handle.write(f"Phone Number: {personal_info[name]['phone number']}\n")
+            file_handle.write(f"Email Address: {personal_info[name]['email address']}\n")
+            file_handle.write("\n")  # Separate records by a blank line
         
         #ask the user to continue or not
         continue_or_not = input("Would you like to continue? (y or n): ")
